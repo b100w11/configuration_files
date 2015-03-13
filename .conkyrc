@@ -7,17 +7,12 @@ update_interval 1
 update_interval_on_battery 1
 
 TEXT
-^fg(\#abcdef)  ^ca(1,netinfo_popup.sh)⮚ ^fg(\#ffffff)${wireless_essid wlp3s0}^ca() \
-${if_match ${wireless_link_qual_perc wlp3s0} > 60}+${else}-${endif}  \
+^fg(\#fcdc3b)  C  ^fg(\#ffffff)${cpu cpu%}  \
   \
-^fg(\#9932cd)  ^ca(1,battery_info_popup.sh)⮏ ^fg(\#ffffff)${battery_percent}^ca()  \
+^fg(\#fcdc3b)  M ^fg(\#ffffff)${mem}/${memmax}  \
   \
-^fg(\#0099cc)  ⮞ ^fg(\#ffffff)${execp volume_level.sh}  \
+^fg(\#fcdc3b)  ^fg(\#ffffff)${time %H:%M:%S}  \
   \
-^fg(\#66cd00)  ⮛ ^fg(\#ffffff)${execp xbacklight -get | awk '{printf("%.0f\n", $1)}'}  \
+^fg(\#ff0000)  ^fg(\#ffffff)${time %A, %_d/%m/%Y}  \
   \
-^fg(\#fc3bdc)  ⮗ ^fg(\#ffffff)${execpi 3600 checkupdates | wc -l}  \
-  \
-^fg(\#fcdc3b)  ⮠ ^fg(\#ffffff)${time %H: %M}  \
-  \
-^fg(\#ff0000)  ⮠ ^fg(\#ffffff)${time %A %d %B %Y}  \
+^fg(\#ff0000)  ^fg(\#ffffff)${layout}  \

@@ -70,78 +70,79 @@ set autoindent
 "}}}
 
 " ================ Vundle =================================================={{{
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle'
 
 " ================ Colorschemes ============================================{{{
-Bundle 'xolox/vim-colorscheme-switcher'
-Bundle 'xolox/vim-misc'
-Bundle 'tomasr/molokai'
-Bundle 'romainl/Apprentice'
-Bundle 'zefei/cake16'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'jeetsukumaran/vim-mochalatte'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/base16-vim'
-Bundle 'baeuml/summerfruit256.vim'
-Bundle 'DAddYE/soda.vim'
-Bundle 'vim-scripts/Cleanroom'
-Bundle 'jnurmine/Zenburn'
-Bundle 'junegunn/seoul256.vim'
-Bundle 'morhetz/gruvbox'
-Bundle 'sjl/badwolf'
+Plugin 'xolox/vim-colorscheme-switcher'
+Plugin 'xolox/vim-misc'
+Plugin 'tomasr/molokai'
+Plugin 'romainl/Apprentice'
+Plugin 'zefei/cake16'
+Plugin '29decibel/codeschool-vim-theme'
+Plugin 'jeetsukumaran/vim-mochalatte'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+Plugin 'baeuml/summerfruit256.vim'
+Plugin 'DAddYE/soda.vim'
+Plugin 'vim-scripts/Cleanroom'
+Plugin 'jnurmine/Zenburn'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'sjl/badwolf'
 "}}}
 
 " ================ Tpope ==================================================={{{
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-obsession'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
 "}}}
 
 " ================ IDE Like ================================================{{{
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'scrooloose/nerdtree'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'edkolev/tmuxline.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'edkolev/tmuxline.vim'
 "Trying out no autocompletion
-Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "}}}
 
 " ================ Language specific ======================================={{{
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'sandeepravi/refactor-rails.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-fireplace'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'lervag/vim-latex'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'ecomba/vim-ruby-refactoring'
+"Plugin 'sandeepravi/refactor-rails.vim'
+"Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-fireplace'
+Plugin 'ehamberg/vim-cute-python'
+Plugin 'lervag/vim-latex'
 "}}}
 
 " ================ Improvements ============================================{{{
-Bundle 'tmhedberg/matchit'
-Bundle 'rking/ag.vim'
-Bundle 'rm-hull/vim-locate'
-Bundle 'bling/vim-airline'
-Bundle 'sjl/gundo.vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'rking/ag.vim'
+Plugin 'rm-hull/vim-locate'
+Plugin 'bling/vim-airline'
+Plugin 'sjl/gundo.vim'
 "}}}
 
 " ================ Miscellaneous ==========================================={{{
-Bundle 'vim-scripts/vimwiki'
+Plugin 'vim-scripts/vimwiki'
 "Tying out no medium mode
-" Bundle 'kbarrette/mediummode'
-Bundle 'vim-scripts/sudo.vim'
+" Plugin 'kbarrette/mediummode'
+Plugin 'vim-scripts/sudo.vim'
 
 "}}}
+call vundle#end()
 "}}}
 
 " ================ Plugin Configuration ===================================={{{

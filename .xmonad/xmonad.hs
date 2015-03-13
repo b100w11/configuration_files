@@ -50,7 +50,7 @@ main = do
   ,((myModMask , xK_i), raise (className =? "Eclipse"))
   ,((myModMask , xK_b), sendMessage ToggleStruts)
   ,((myModMask , xK_y), spawn myClipboardManager)
-  ,((myModMask , xK_q), alert 100)
+  --,((myModMask , xK_q),spawn "killall conky dzen2 && xmonad --recompile && xmonad --restart")
   ,((0, 0x1008FF11), spawn myVolumeDown)
   ,((0, 0x1008FF12), spawn myToggleMute)
   ,((0, 0x1008FF13), spawn myVolumeUp)
@@ -70,13 +70,11 @@ myBorderWidth = 1
 myModMask = mod4Mask
 myWorkspaces = ["1","2","3","4",
     "5", "6", "7", "8", "9"]
--- myWorkspaces = ["Ⅰ","Ⅱ","Ⅲ","Ⅳ ",
-    -- "5", "6", "7", "8", "9"]
-myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=9' -x 400 -w 880"
-myWorkspaceBar = "dzen2 -e '' -fn 'Uushi:size=9' -x 0 -y 0 -w 400 -ta 'l'"
--- myWorkspaceBar = "dzen2 -fn 'Sans:size=10' -x 0 -y 0 -w 400 -ta 'l'"
+myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'xft:Droid Sans Mono:size=8:antialias=true' -x 1280 -w 1280"
+myWorkspaceBar = "dzen2 -e '' -fn 'xft:Droid Sans Mono:size=8:antialias=true'  -x 0 -y 0 -w 1152 -ta 'l'"
 myDmenu = "dmenu_run -b"
-myLocker = "slock"
+myLocker = "xscreensaver-command --lock"
+--myLocker = "slock"
 myFocusedBorderColor = "#ebac54"
 myVolumeUp = "amixer set Master 10+ && volume_popup.sh"
 myVolumeDown = "amixer set Master 10- && volume_popup.sh"
