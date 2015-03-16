@@ -24,11 +24,11 @@ main = do
   ,layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig
   ,logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn h 
       , ppCurrent           =   dzenColor "#ebac54" "#2b2b2b" . pad
-      , ppVisible           =   dzenColor "white" "#2b2b2b" . pad
+      , ppVisible           =   dzenColor "white"   "#2b2b2b" . pad
       , ppHidden            =   dzenColor "#b4cdcd" "#2b2b2b" . pad
       , ppHiddenNoWindows   =   dzenColor "#FFFFFF" "#2b2b2b" . pad
-      , ppLayout   = dzenColor "lightblue" "#2b2b2b" . pad
-      , ppTitle    = (\x -> "")
+      , ppLayout            =   dzenColor "lightblue" "#2b2b2b" . pad
+      --, ppTitle    = (\x -> "")
   }
   ,terminal = myTerminal
   ,modMask = myModMask
@@ -68,10 +68,11 @@ chromium = "chromium"
 tsocks_chromium = "tsocks chromium"
 myBorderWidth = 1
 myModMask = mod4Mask
-myWorkspaces = ["1","2","3","4",
-    "5", "6", "7", "8", "9"]
-myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'xft:Droid Sans Mono:size=8:antialias=true' -x 1280 -w 1280"
-myWorkspaceBar = "dzen2 -e '' -fn 'xft:Droid Sans Mono:size=8:antialias=true'  -x 0 -y 0 -w 1152 -ta 'l'"
+myWorkspaces = ["1:web","2:sh","3","4","5","6","7","8:log","9:mail"]
+myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -x 1280 -w 1280 -ta 'l'"
+-- -xs 0 = all displays 1= left 2=right
+--myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -xs 2"
+myWorkspaceBar = "dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -x 0 -y 0 -w 1152 -ta 'l'"
 myDmenu = "dmenu_run -b"
 myLocker = "xscreensaver-command --lock"
 --myLocker = "slock"
@@ -93,9 +94,9 @@ showVolumeLevel x = do
     y <- volumeLevel
     print y
 
-alert a = dzenConfig centered (show a)
-centered =
-        onCurr (center 200 50)
-    >=> font "-*-helvetica-*-r-*-*-64-*-*-*-*-*-*-*"
-    >=> addArgs ["-fg", "#80c0ff"]
-    >=> addArgs ["-bg", "#000040"]
+--alert a = dzenConfig centered (show a)
+--centered =
+--        onCurr (center 200 50)
+--    >=> font "-*-helvetica-*-r-*-*-64-*-*-*-*-*-*-*"
+--    >=> addArgs ["-fg", "#80c0ff"]
+--    >=> addArgs ["-bg", "#000040"]

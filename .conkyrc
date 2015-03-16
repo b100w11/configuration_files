@@ -1,18 +1,23 @@
 short_units yes
 background yes
 out_to_console yes
-out_to_x no
+out_to_x no 
 
 update_interval 1
 update_interval_on_battery 1
 
+#^fg(\#ff0000) ^fg(\#ffffff)${weather "http://weather.noaa.gov/pub/data/observations/metar/stations/LIVT"}\
 TEXT
-^fg(\#fcdc3b)  C  ^fg(\#ffffff)${cpu cpu%}  \
-  \
-^fg(\#fcdc3b)  M ^fg(\#ffffff)${mem}/${memmax}  \
-  \
-^fg(\#fcdc3b)  ^fg(\#ffffff)${time %H:%M:%S}  \
-  \
-^fg(\#ff0000)  ^fg(\#ffffff)${time %A, %_d/%m/%Y}  \
-  \
-^fg(\#ff0000)  ^fg(\#ffffff)${layout}  \
+^fg(\#000000) ^fg(\#33b8ff)${execi  3600 ~/bin/weather.sh} \
+                                                     \
+^fg(\#fcdc3b) ^fg(\#ffffff)${time %T %Z}\
+ \
+^fg(\#ff0000) ^fg(\#ffffff)${time %A, %_d/%m/%Y}\
+ \
+^fg(\#000000) ^fg(\#ff0055)${execp ~/bin/xkblayout-state print %s}\
+ \
+                                                     \
+^fg(\#ffcc33) C ^fg(\#ffffff)${cpu cpu0}% \
+^fg(\#33ff66) M ^fg(\#ffffff)${memperc}% \
+^fg(\#5233ff) S ^fg(\#ffffff)${swapperc}% ${swapmax} \
+^fg(\#33b8ff) L ^fg(\#ffffff)${loadavg} \
