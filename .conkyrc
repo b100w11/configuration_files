@@ -6,18 +6,18 @@ out_to_x no
 update_interval 1
 update_interval_on_battery 1
 
-#^fg(\#ff0000) ^fg(\#ffffff)${weather "http://weather.noaa.gov/pub/data/observations/metar/stations/LIVT"}\
 TEXT
 ${execi 3600 ~/bin/weather.sh Work} \
-               \
+                \
 ^fg() ${execi 60 ~/bin/bitstamp.sh} \
-               \
+                \
 ^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${time %T %Z %A, %_d/%m/%Y}\
- \
+                \
 ^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${execp ~/bin/xkblayout-state print %s}\
- \
-                                         \
-^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${cpu cpu0}% \
-^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${memperc}% \
+                \
+                \
+^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${addr eth0} \
+^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${cpu cpu0}%\
+^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${memperc}%\
 ^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${swapperc}%\
-^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${loadavg} \
+^fg(gray70)^fn(Font Awesome:size=8:antialias=true)^fn(Droid:size=8:antialias=true) ^fg(\#ffffff)${loadavg}

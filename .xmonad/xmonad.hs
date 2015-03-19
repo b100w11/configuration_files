@@ -83,10 +83,10 @@ tsocks_chromium = "tsocks chromium"
 myBorderWidth = 1
 myModMask = mod4Mask
 myWorkspaces = ["1:web","2:sh","3","4","5","6","7","8:log","9:mail"]
-myRightBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 1280 -w 1280 -ta 'l'"
+myRightBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 1280 -w 50% -ta 'r'"
 -- -xs 0 = all displays 1= left 2=right
 --myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -xs 2"
-myLeftBar = "dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 0 -y 0 -w 1152 -ta 'l'"
+myLeftBar = "dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 0 -y 0 -w 45%  -ta 'l'"
 myDmenu = "dmenu_run -b -nb black -nf yellow -sf yellow"
 myLocker = "xscreensaver-command --lock"
 --myLocker = "slock"
