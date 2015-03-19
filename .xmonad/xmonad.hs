@@ -7,28 +7,43 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Minimize
 import XMonad.Layout.Spacing
+import XMonad.Layout.Circle
 import XMonad.Util.Run
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.WindowGo
 import System.IO
 import System.Process
 
+myLayout = tiled ||| Mirror tiled ||| Full
+ where  
+      -- default tiling algorithm partitions the screen into two panes  
+      tiled = spacing 10 $ Tall nmaster delta ratio  
+   
+      -- The default number of windows in the master pane  
+      nmaster = 1  
+   
+      -- Default proportion of screen occupied by master pane  
+      ratio = 2/3  
+   
+      -- Percent of screen to increment by when resizing panes  
+      delta = 5/100  
 
 main = do
- statusBarPipe <- spawnPipe myStatusBar 
- h <- spawnPipe myWorkspaceBar
+ rightBarPipe <- spawnPipe myRightBar 
+ leftBarPipe <- spawnPipe myLeftBar
 
  xmonad $ defaultConfig
 
   { manageHook = manageDocks<+> manageHook defaultConfig
-  ,layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig
-  ,logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn h 
+  ,layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig 
+  ,logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn leftBarPipe
       , ppCurrent           =   dzenColor "#ebac54" "#2b2b2b" . pad
       , ppVisible           =   dzenColor "white"   "#2b2b2b" . pad
       , ppHidden            =   dzenColor "#b4cdcd" "#2b2b2b" . pad
       , ppHiddenNoWindows   =   dzenColor "#FFFFFF" "#2b2b2b" . pad
-      , ppLayout            =   dzenColor "lightblue" "#2b2b2b" . pad
+      , ppLayout            =   dzenColor "#b4cdcd" "#2b2b2b" . pad
       --, ppTitle    = (\x -> "")
+      , ppTitle             =   (" " ++) . dzenColor "white" "#1B1D1E" . dzenEscape
   }
   ,terminal = myTerminal
   ,modMask = myModMask
@@ -42,15 +57,14 @@ main = do
   ,((myModMask .|. shiftMask, xK_o), spawn myBrowser) 
   ,((myModMask , xK_f), runOrRaise myBrowser (className =? "Firefox"))
   ,((myModMask , xK_d), runOrRaise myMediaPlayer (className =? "Vlc"))
-  ,((myModMask , xK_c), runOrRaiseNext chromium (className =? "Chromium"))
+  ,((myModMask , xK_c), runOrRaiseNext myChromium (className =? "Chromium"))
   ,((myModMask , xK_v), runOrRaise "gvim" (className =? "Gvim"))
-  ,((myModMask , xK_e), runOrRaise "emacs" (className =? "Emacs"))
-  ,((myModMask , xK_r), runOrRaiseNext "evince" (className =? "Evince"))
+  --,((myModMask , xK_r), runOrRaiseNext "evince" (className =? "Evince"))
   ,((myModMask , xK_s), raise (className =? "URxvt"))
   ,((myModMask , xK_i), raise (className =? "Eclipse"))
   ,((myModMask , xK_b), sendMessage ToggleStruts)
   ,((myModMask , xK_y), spawn myClipboardManager)
-  --,((myModMask , xK_q),spawn "killall conky dzen2 && xmonad --recompile && xmonad --restart")
+  ,((myModMask , xK_q), spawn "killall conky dzen2 ; xmonad --recompile ; xmonad --restart")
   ,((0, 0x1008FF11), spawn myVolumeDown)
   ,((0, 0x1008FF12), spawn myToggleMute)
   ,((0, 0x1008FF13), spawn myVolumeUp)
@@ -64,16 +78,16 @@ myTerminal
     = "urxvt -e zsh -c 'tmux -q has-session && exec tmux attach || exec tmux'"
 myBrowser = "firefox"
 myMediaPlayer = "vlc"
-chromium = "chromium"
+myChromium = "chromium"
 tsocks_chromium = "tsocks chromium"
 myBorderWidth = 1
 myModMask = mod4Mask
 myWorkspaces = ["1:web","2:sh","3","4","5","6","7","8:log","9:mail"]
-myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -x 1280 -w 1280 -ta 'l'"
+myRightBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 1280 -w 1280 -ta 'l'"
 -- -xs 0 = all displays 1= left 2=right
 --myStatusBar = "conky -c .conkyrc | dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -xs 2"
-myWorkspaceBar = "dzen2 -e '' -fn 'Uushi:size=8:antialias=true' -x 0 -y 0 -w 1152 -ta 'l'"
-myDmenu = "dmenu_run -b"
+myLeftBar = "dzen2 -e '' -fn 'Droid:size=8:antialias=true' -x 0 -y 0 -w 1152 -ta 'l'"
+myDmenu = "dmenu_run -b -nb black -nf yellow -sf yellow"
 myLocker = "xscreensaver-command --lock"
 --myLocker = "slock"
 myFocusedBorderColor = "#ebac54"
